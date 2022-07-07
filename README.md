@@ -1,1 +1,1 @@
-# proj2 angular and spring boot src code for event application
+proj2 angular and spring boot src code for event application
