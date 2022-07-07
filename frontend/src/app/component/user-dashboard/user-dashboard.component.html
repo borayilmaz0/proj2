@@ -1,0 +1,68 @@
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <p style="text-align: right;"> {{user.username}} # {{user.id}} </p>
+    <h1 style="text-align: center;">User Dashboard</h1>
+    <br><br>
+    <div class="row hidden-md-up">
+      <div class="col-12 col-md-8">
+        
+        <h2>Posted Events</h2>
+        <p *ngIf="userEvents.length === 0"> No posted events</p>
+        <div class="card text-center" *ngFor="let userEvent of userEvents" style="margin-bottom: 20px;">
+          
+          <div class="card-body">
+            <div class="card-header" style="background-color: rgb(100, 150, 200);">
+              {{userEvent.title}}
+            </div>
+            <div class="card-body">
+              <p class="card-text" style="text-align: left;"> {{userEvent.text}} </p>
+              <p class="card-text" style="text-align: right;"> Admin:  #{{userEvent.adminid}} </p>
+            </div>
+            <div class="card-footer text">
+              <span style="float: left;">Sent: {{userEvent.sent}}</span>
+              <span style="float: right;">Due: {{userEvent.due}}</span>
+            </div>
+          </div>
+  
+          <div class="card-body">
+            <ul class="nav nav-pills card-header-pills">
+              <li class="nav-item" >
+                <a class="nav-link" href="eventDetails" (click)="onEventDetails(userEvent.id)">Check Details</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="dashboard" (click)="onDelete(userEvent.id)">Delete Event</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-12 col-md-4">
+        <h2>Upcoming</h2>
+        <p *ngIf="events.length === 0"> No upcoming events </p>
+        <div class="card text-center" *ngFor="let event of events" style="margin-bottom: 20px;">
+          
+          <div class="card-body">
+            <div class="card-header" style="background-color: rgb(100, 150, 200);">
+              {{event.title}}
+            </div>
+            <div class="card-body">
+              <p class="card-text" style="text-align: right;"> Admin: #{{event.adminid}} </p>
+            </div>
+            <div class="card-footer text">
+              <span style="float: right;">Due: {{event.due}}</span>
+            </div>
+          </div>
+  
+          <div class="card-body">
+            <ul class="nav nav-pills card-header-pills">
+              <li class="nav-item" >
+                <a href="eventDetails" (click)="onEventDetails(event.id)">Check Details</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

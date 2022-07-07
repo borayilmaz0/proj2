@@ -1,0 +1,59 @@
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <h2 style="text-align: center;">Event Details</h2>
+    <br><br>
+    <div class="row hidden-md-up">
+      <div class="col-12 col-md-12">
+
+        <h2>Event #{{eventResponse.id}}</h2>
+        <div class="card text-center" style="margin-bottom: 20px;">
+          
+          <div class="card-body">
+            <div class="card-header" style="background-color: rgb(100, 150, 200);">
+              {{eventResponse.title}}
+            </div>
+            <div class="card-body">
+              <p class="card-text" style="text-align: left;"> {{eventResponse.text}} </p>
+              <p class="card-text" style="text-align: right;"> Admin: {{eventResponse.adminUsername}} #{{eventResponse.adminid}} </p>
+              <p class="card-text" style="text-align: right;">Monthly Event: {{getIsMonthly()}} </p>
+            </div>
+            <div class="card-footer text">
+              <span style="float: left;">Sent: {{eventResponse.sent}}</span>
+              <span style="float: right;">Due: {{eventResponse.due}}</span>
+            </div>
+          </div>
+          
+          <div *ngIf="canModify()">
+            <div class="card-body" >
+              <ul class="nav nav-pills card-header-pills">
+                <li class="nav-item">
+                  <a class="nav-link" href="dashboard" (click)="onDelete(eventResponse.id)">Delete Event</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <h2>Invited Users</h2>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of invitedUsers">
+          <td>{{ user.id }}</td>
+          <td>{{ user.username }}</td>
+          <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

@@ -1,0 +1,80 @@
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <h1 style="text-align: center;">Invite Users</h1>
+    <h2 *ngIf="eventResponse.id < 0"> Select event</h2>
+    <h2 *ngIf="eventResponse.id >= 0"> {{eventResponse.title}} #{{eventResponse.id}} </h2>
+    <form (ngSubmit)="onModifyInvitations()" #invitaitons="ngForm">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Due</th>
+          <th scope="col">Selected</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of events" >
+          <td>{{ event.id }}</td>
+          <td>{{ event.title }}</td>
+          <td>{{ event.due }}</td>
+          <td *ngIf="eventResponse.id === event.id">
+            <input 
+              type="radio" 
+              style="width: 15px; height: 15px;" 
+              id="inviteEvent"
+              name="inviteEvent"
+              checked>
+          </td>
+          <td *ngIf="eventResponse.id !== event.id">
+            <input 
+              type="radio"
+              id="inviteEvent"
+              name="inviteEvent"
+              style="width: 15px; height: 15px; "
+              (change)="onButton(event.id)">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h2> User List </h2>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col" >Invited</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.username }}</td>
+          <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+          <td *ngIf="userInvitations.get(user.id)">
+            <input 
+              type="checkbox" 
+              style="width: 15px; height: 15px;" 
+              checked
+              (change)="modifiedInvitations.set(user.id, !modifiedInvitations.get(user.id))">
+          </td>
+          <td *ngIf="!userInvitations.get(user.id)">
+            <input 
+            type="checkbox" 
+            style="width: 15px; height: 15px; "
+            (change)="modifiedInvitations.set(user.id, !modifiedInvitations.get(user.id))">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button
+      type="submit" [disabled]="!isEventSelected" 
+      style="width: min-content; float: center; background-color: rgb(100, 150, 200);"
+      class="btn btn-info"
+      (click)="onModifyInvitations()">
+      Submit
+    </button>
+    </form>
+  </div>
+</section>

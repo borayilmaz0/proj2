@@ -1,0 +1,40 @@
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card-body p-5 text-center">
+          <div class="mb-md-5 mt-md-4 pb-5">
+            <form (ngSubmit)="onSubmit()" #login="ngForm">
+              <div class="form-outline form-white mb-4">
+                <h1 style="text-align: center;">Login</h1>
+                <label for="email">Email</label>
+                <input 
+                  type="email" [(ngModel)]="userLoginRequest.email" 
+                  id="email" 
+                  name="email" 
+                  placeholder="Enter your email"
+                  style="text-align: center;"
+                  class="form-control form-control-lg" />
+              </div>
+              <div class="form-outline form-white mb-4">
+                <label for="password">Password</label>
+                <input 
+                  type="password" [(ngModel)]="userLoginRequest.password" 
+                  id="password" 
+                  name="password" 
+                  placeholder="Enter your password"
+                  style="text-align: center;"
+                   class="form-control form-control-lg" />
+               </div>
+               <button 
+                 type="submit" [disabled]="!login.form.valid" 
+                style="width: min-content;"
+                class="btn btn-info">Login
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

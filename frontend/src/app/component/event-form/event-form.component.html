@@ -1,0 +1,116 @@
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card-body p-5 text-center">
+            <div class="mb-md-5 mt-md-4 pb-5">
+              <form (ngSubmit)="onSubmit()" #postEvent="ngForm">
+                <div class="form-outline form-white mb-4">
+                  <h1 style="text-align: center;">Post Event</h1>
+                  <label for="title">Event Title</label>
+                  <input 
+                    type="title" [(ngModel)]="eventCreateRequest.title" 
+                    id="title" 
+                    name="title" 
+                    placeholder="Enter Event Title"
+                    style="text-align: center;"
+                    class="form-control form-control-lg"
+                    required #title="ngModel">
+                
+                  <label for="text">Evet Text</label>
+                  <textarea 
+                    type="text" [(ngModel)]="eventCreateRequest.text" 
+                    id="text" 
+                    name="text" 
+                    placeholder="Enter Event Information"
+                    style="text-align: center;"
+                    class="form-control">
+                  </textarea>
+
+                  <div class="row hidden-md-up">
+                    <div class="col-12 col-md-4">
+                        <label for="title">Due Year</label>
+                        <input 
+                          type="number" [(ngModel)]="eventCreateRequest.dueYear" 
+                          min="2022"
+                          id="year" 
+                          name="year" 
+                          placeholder="Enter Due Year"
+                          style="text-align: center;"
+                          class="form-control form-control-lg"
+                          required #dueYear="ngModel">
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <label for="title">Due Month</label>
+                        <input 
+                          type="number" [(ngModel)]="eventCreateRequest.dueMonth" 
+                          min="1" max="12"
+                          id="month" 
+                          name="month" 
+                          placeholder="Enter Due Month"
+                          style="text-align: center;"
+                          class="form-control form-control-lg"
+                          required #dueMonth="ngModel">
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <label for="title">Due Day</label>
+                        <input 
+                          type="number" [(ngModel)]="eventCreateRequest.dueDay" 
+                          min="1" max="31"
+                          id="day" 
+                          name="day" 
+                          placeholder="Enter Due Day"
+                          style="text-align: center;"
+                          class="form-control form-control-lg"
+                          required #dueDay="ngModel">
+                    </div>
+                  </div>
+                  <div class="row hidden-md-up">
+                    <div class="col-12 col-md-6">
+                        <label for="title">Due Hour</label>
+                        <input 
+                          type="number" [(ngModel)]="eventCreateRequest.dueHour" 
+                          min="0" max="23"
+                          id="hour" 
+                          name="hour" 
+                          placeholder="Enter Due Hour"
+                          style="text-align: center;"
+                          class="form-control form-control-lg"
+                          required #dueHour="ngModel">
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label for="title">Due Minute</label>
+                        <input 
+                          type="number" [(ngModel)]="eventCreateRequest.dueMin" 
+                          min="0" max="59"
+                          id="minute" 
+                          name="minute" 
+                          placeholder="Enter Due Minute"
+                          style="text-align: center;"
+                          class="form-control form-control-lg"
+                          required #dueMin="ngModel">
+                    </div>
+
+                    <div>
+                      <input 
+                        type="checkbox" 
+                        style="width: 15px; height: 15px; "
+                        (change)="onMonthly()">
+                        Make this event monthly
+                    </div>
+                  </div>
+                </div>
+                <button 
+                  type="submit" [disabled]="!postEvent.form.valid" 
+                style="width: min-content;"
+                class="btn btn-info">Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  

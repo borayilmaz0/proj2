@@ -1,0 +1,62 @@
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card-body p-5 text-center">
+          <div class="mb-md-5 mt-md-4 pb-5">
+            <form (ngSubmit)="onSubmit()" #register="ngForm">
+              <div class="form-outline form-white mb-4">
+                <h1 style="text-align: center;">Register</h1>
+                <label for="username">Username</label>
+                <input 
+                  type="username" [(ngModel)]="userRegisterRequest.username" 
+                  id="username" 
+                  name="username" 
+                  placeholder="Enter your username"
+                  style="text-align: center;"
+                  class="form-control form-control-lg"
+                  required #username="ngModel">
+                <div [hidden]="!username.pristine" class="alert alert-danger">
+                  This information is required
+                </div>
+              
+                <label for="email">Email</label>
+                <input 
+                  type="email" [(ngModel)]="userRegisterRequest.email" 
+                  id="email" 
+                  name="email" 
+                  placeholder="Enter your email"
+                  style="text-align: center;"
+                  class="form-control form-control-lg"
+                  required #email="ngModel">
+                <div [hidden]="!email.pristine" class="alert alert-danger">
+                  This information is required
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                  <label for="password">Password</label>
+                    <input 
+                      type="password" [(ngModel)]="userRegisterRequest.password" 
+                      id="password" 
+                      name="password" 
+                      placeholder="Enter your password"
+                      style="text-align: center;"
+                      class="form-control form-control-lg"
+                      required #password="ngModel">
+                    <div [hidden]="!email.pristine" class="alert alert-danger">
+                      This information is required
+                    </div>
+                  </div>
+                </div>
+                <button 
+                 type="submit" [disabled]="!register.form.valid" 
+                style="width: min-content;"
+                class="btn btn-info">Register
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
